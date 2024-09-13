@@ -1,0 +1,238 @@
+{
+    "token": "7825aa98c06083eea0dd72bc2db46e47",
+    "out": "export.csv",
+    "id_site": "1",
+    "mode": 1,
+    "base_url": "https://track.yourpage.de/",
+    "sites_to_fetch": [
+        {
+            "method": "API.get"
+        },
+        {
+            "method": "Referrers.getSearchEngines",
+            "showColumns": "nb_visits"
+        },
+        {
+            "method": "Goals.get",
+            "idGoal": "ecommerceAbandonedCart",
+            "showColumns": "nb_conversions,revenue"
+        },
+        {
+            "method": "Referrers.getSocials",
+            "showColumns": "nb_visits"
+        },
+        {
+            "method": "DevicesDetection.getType",
+            "showColumns": "nb_visits,nb_visits_converted"
+        },
+        {
+            "method": "Actions.getPageTitles",
+            "showColumns": "nb_visits"
+        },
+        {
+            "method": "DevicesDetection.getBrowsers",
+            "showColumns": "nb_visits"
+        },
+        {
+            "method": "Referrers.getReferrerType",
+            "showColumns": "nb_conversions,revenue"
+        }
+    ],
+    "table_data": [
+        {
+            "name": "Website Besuche",
+            "idx": 0,
+            "field": "nb_visits"
+        },
+        {
+            "name": "Eindeutige Seitenansichten",
+            "idx": 0,
+            "field": "nb_uniq_pageviews"
+        },
+        {
+            "name": "Durchschnittlicher Aufenthalt (Verweildauer)",
+            "idx": 0,
+            "field": "avg_time_on_site"
+        },
+        {
+            "name": "Abgesprungene Besucher",
+            "idx": 0,
+            "field": "bounce_rate",
+            "factor": 100
+        },
+        {
+            "name": "Einmalige Downloads",
+            "idx": 0,
+            "field": "nb_uniq_downloads"
+        },
+        {
+            "name": "Google-Klicks",
+            "idx": 1,
+            "label": "Google",
+            "field": "nb_visits"
+        },
+        {
+            "name": "Bing-Klicks",
+            "idx": 1,
+            "label": "Bing",
+            "field": "nb_visits"
+        },
+        {
+            "name": "Ecommerce Bestellungen",
+            "idx": 0,
+            "field": "nb_conversions"
+        },
+        {
+            "name": "Einnahmen in Euro",
+            "idx": 0,
+            "field": "revenue"
+        },
+        {
+            "name": "Verlassener Warenkorb",
+            "idx": 2,
+            "field": "nb_conversions"
+        },
+        {
+            "name": "Besuche mit Buchung",
+            "idx": 0,
+            "field": "nb_visits_converted"
+        },
+        {
+            "name": "Käufe pro Besucher",
+            "idx": 0,
+            "field": "conversion_rate",
+            "factor": 100
+        },
+        {
+            "name": "Umsatz im Warenkorb gelassen",
+            "idx": 2,
+            "field": "revenue"
+        },
+        {
+            "name": "von Social Media zum Kauf",
+            "idx": 7,
+            "field": "nb_conversions",
+            "label": "Soziale Netzwerke"
+        },
+        {
+            "name": "von Social Media zum Kauf Einnahmen",
+            "idx": 7,
+            "field": "revenue",
+            "label": "Soziale Netzwerke"
+        },
+        {
+            "name": "Facebook",
+            "idx": 3,
+            "field": "nb_visits",
+            "label": "Facebook"
+        },
+        {
+            "name": "Instagram",
+            "idx": 3,
+            "field": "nb_visits",
+            "label": "Instagram"
+        },
+        {
+            "name": "Twitter",
+            "idx": 3,
+            "field": "nb_visits",
+            "label": "Twitter"
+        },
+        {
+            "name": "Smartphone",
+            "idx": 4,
+            "field": "nb_visits",
+            "label": "Smartphone"
+        },
+        {
+            "name": "Desktop",
+            "idx": 4,
+            "field": "nb_visits",
+            "label": "Desktop"
+        },
+        {
+            "name": "Tablet",
+            "idx": 4,
+            "field": "nb_visits",
+            "label": "Tablet"
+        },
+        {
+            "name": "Phablet",
+            "idx": 4,
+            "field": "nb_visits",
+            "label": "Phablet"
+        },
+        {
+            "name": "Smartphone mit Umsatz",
+            "idx": 4,
+            "field": "nb_visits_converted",
+            "label": "Smartphone"
+        },
+        {
+            "name": "Desktop mit Umsatz",
+            "idx": 4,
+            "field": "nb_visits_converted",
+            "label": "Desktop"
+        },
+        {
+            "name": "Interne Suche",
+            "idx": 5,
+            "field": "nb_visits",
+            "label": " Suche"
+        },
+        {
+            "name": "Startseite",
+            "idx": 5,
+            "field": "nb_visits",
+            "label": " Die Firma - Startseite"
+        },
+        {
+            "name": "Stellenangebote",
+            "idx": 5,
+            "field": "nb_visits",
+            "label": " Stellenangebote - Die Firma"
+        },
+        {
+            "name": "Browser Chrome",
+            "idx": 6,
+            "field": "nb_visits",
+            "label": "Chrome"
+        },
+        {
+            "name": "Browser Chrome Mobile",
+            "idx": 6,
+            "field": "nb_visits",
+            "label": "Chrome Mobile"
+        },
+        {
+            "name": "Browser Firefox",
+            "idx": 6,
+            "field": "nb_visits",
+            "label": "Firefox"
+        },
+        {
+            "name": "Browser Safari",
+            "idx": 6,
+            "field": "nb_visits",
+            "label": "Safari"
+        },
+        {
+            "name": "Browser Safari Mobile",
+            "idx": 6,
+            "field": "nb_visits",
+            "label": "Mobile Safari"
+        },
+        {
+            "name": "Browser Samsung",
+            "idx": 6,
+            "field": "nb_visits",
+            "label": "Samsung Browser"
+        },
+        {
+            "name": "Browser Microsoft Edge",
+            "idx": 6,
+            "field": "nb_visits",
+            "label": "Microsoft Edge"
+        }
+    ]
+}
