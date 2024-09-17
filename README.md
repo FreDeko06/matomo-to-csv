@@ -11,7 +11,7 @@ Mit diesem Python-Skript können Daten, wie Besuche, Seitenansichten und weitere
    pip install requests
   ```
 - Matomo-Token generieren, Basis-URL und eigene ```idSite``` herausfinden:
-    - Matomo-Token kann generiert werden unter Matomo > Enstellungen > Sicherheit > Neuen Token generieren > Nur sicher Anfragen zulassen **abhaken** > Neuen Token generieren
+    - Matomo-Token kann generiert werden unter Matomo > Enstellungen > Sicherheit > Neuen Token generieren > Neuen Token generieren
     - ```idSite``` kann in der URL gefunden werden
       - z.B. ```https://MATOMOSITE/index.php?module=CoreHome&action=index&idSite=1&period=month&date=today```: ```idSite``` ist ```1```
     - Die Basis-URL ist die URL bis zum 1. Fragezeichen

@@ -131,9 +131,9 @@ def req_and_write(s_year, s_month, s_day, e_year, e_month, e_day, site_id, token
     if s_day == -1:
         s_day = 1
     dates = f"{s_year}-{s_month:02d}-{s_day}%2C{e_year}-{e_month:02d}-{e_day}"
-    built_url = build_url(dates, site_id, token)
+    built_url = build_url(dates, site_id)
     print("Daten holen...")
-    contents = requests.get(built_url)
+    contents = requests.post(built_url, data={'token_auth': token})
     parsed = contents.json()
     parse_and_write_data(parsed, out_path, s_month, s_year)
 
@@ -160,7 +160,7 @@ def parse_month_year(to_parse):
     except ValueError as e:
         raise ValueError(f"{e}")
         
-def build_url(dates, site_id, token):
+def build_url(dates, site_id):
     url = base_url + "?module=API&format=JSON&method=API.getBulkRequest"
     period = "range"
     if mode == 1:
@@ -169,7 +169,7 @@ def build_url(dates, site_id, token):
         period = "day"
     for i in range(len(sites_to_fetch)):
         url += f"&urls[{i}]={urllib.parse.quote_plus(urllib.parse.urlencode(sites_to_fetch[i]), safe='%2C')}%26idSite%3D{site_id}%26format_metrics%3D0"
-    url = f"{url}&period={period}&date={dates}&token_auth={token}"
+    url = f"{url}&period={period}&date={dates}"
     return url
 
 def parse_and_write_data(data, out_path, month, year):
