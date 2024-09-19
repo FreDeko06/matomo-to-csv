@@ -2,7 +2,6 @@
     "token": "7825aa98c06083eea0dd72bc2db46e47",
     "out": "export.csv",
     "id_site": "1",
-    "mode": 1,
     "base_url": "https://track.yourpage.de/",
     "sites_to_fetch": [
         {

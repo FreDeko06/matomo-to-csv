@@ -27,7 +27,6 @@ Ein Bespiel für eine data.json kann [hier](examples/data.json) gefunden werden.
 - ```out```: Der Pfad zur CSV-Datei, in die exportiert werden soll
 - ```id_site```: Die ```idSite``` von Matomo
 - ```base_url```: Die Basis-URL
-- ```mode```: Ob Tagesweise oder Monatsweise extrahiert werden soll (1 = Monatsweise, 2 = Tagesweise)
 - ```sites_to_fetch```: Die Seiten, die geholt werden sollen (mehr Infos zur Matomo-API [hier](https://developer.matomo.org/api-reference/reporting-api))
 - ```table_data```: Welche Daten aus den Seiten exportiert werden sollen
 

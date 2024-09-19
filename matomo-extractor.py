@@ -10,15 +10,15 @@ saved_out = ""
 #siteID von Matomo
 saved_site_id = ""
 
-#Für welchen Zeitraum sollen Daten geholt werden
-#mode = 1 --> Monatsweise
-#mode = 2 --> Tagesweise
-mode = 0    
-
 #Abgerufene Daten
 sites_to_fetch = []
 
 table_data = []
+
+#Für welchen Zeitraum sollen Daten geholt werden
+#mode = 1 --> Monatsweise
+#mode = 2 --> Tagesweise
+mode = 0
 
 import os
 import json
@@ -70,11 +70,6 @@ def main():
                 global saved_out
                 saved_out = tok
                 
-            tok = fetch_data.get("mode")
-            if tok != None:
-                global mode
-                mode = tok
-                
             tok = fetch_data.get("base_url")
             if tok != None:
                 global base_url
@@ -89,6 +84,15 @@ def main():
         site_id = input("Bitte Seiten-ID eingeben > ")
     else:
         site_id = saved_site_id
+    
+    md = input("Tagesweise (t) oder Monatsweise (m)? > ")
+    global mode
+    if md == "t":  
+        mode = 2
+    elif md == "m":
+        mode = 1
+    else:
+        raise ValueError("Ungültige Eingabe!")
     
     day = ""
     ex = ""
