@@ -8,7 +8,7 @@ Mit diesem Python-Skript können Daten, wie Besuche, Seitenansichten und weitere
 - requests installieren:
   - in einer Konsole folgenden Befehl eingeben:
   ```
-   pip install requests
+  pip install requests
   ```
 - Matomo-Token generieren, Basis-URL und eigene ```idSite``` herausfinden:
     - Matomo-Token kann generiert werden unter Matomo > Enstellungen > Sicherheit > Neuen Token generieren > Neuen Token generieren
