@@ -232,9 +232,9 @@ def create_data(data, date=""):
                 month_data.append(data[idx].get(field, -1))
         else:
             if date != "":
-                month_data.append(next((entry.get(field, 0) for entry in data[idx].get(date) if entry.get("label", "") == label), 0))
+                month_data.append(next((entry.get(field, -1) for entry in data[idx].get(date) if entry.get("label", "") == label), -1))
             else:
-                month_data.append(next((entry.get(field, 0) for entry in data[idx] if entry.get("label", "") == label), 0))
+                month_data.append(next((entry.get(field, -1) for entry in data[idx] if entry.get("label", "") == label), -1))
         month_data[i] = month_data[i] * factor
     
     return month_data

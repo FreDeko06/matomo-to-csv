@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 
 
 def do_request(url):
@@ -52,6 +53,67 @@ def build_url_dict(url):
     return d
 
 
+def printResults(sites_to_fetch, table_data):
+    print("\n\nsites_to_fetch: \n")
+    print(json.dumps(sites_to_fetch, indent=4))
+    print("\n\ntable_data: \n")
+    print(json.dumps(table_data, indent=4))
+
+    print("\n\033[31;1mDaran denken 'idx' zu ändern\033[0m")
+
+
+def is_dict_equal_except_columns(dict1, dict2):
+    for key in set(dict1.keys()).union(dict2.keys()):
+        if key == "showColumns":
+            continue
+        if dict1.get(key) != dict2.get(key):
+            return False
+    return True
+
+
+def put_results_in_data_file(sites_to_fetch, table_data):
+    print("Schreibe in die data.json...")
+    with open(os.getcwd() + "/data.json", 'r+', encoding='utf-8') as data_file:
+        try:
+            fetch_data = json.load(data_file)
+        except ValueError as e:
+            raise ValueError(f"JSON-Fehler: {e}")
+        saved_stf = fetch_data["sites_to_fetch"]
+        exists = 0
+        idx = 0
+        for site in saved_stf:
+            if site == sites_to_fetch:
+                exists = 1
+                break
+            if is_dict_equal_except_columns(site, sites_to_fetch):
+                exists = 2
+                break
+            idx += 1
+
+        if exists == 0:
+            saved_stf.append(sites_to_fetch)
+            fetch_data["sites_to_fetch"] = saved_stf
+
+        if exists == 2:
+            if table_data["field"] not in saved_stf[idx]["showColumns"].split(","):
+                saved_stf[idx]["showColumns"] += f",{table_data['field']}"
+                fetch_data["sites_to_fetch"] = saved_stf
+
+        saved_td = fetch_data["table_data"]
+        for td in saved_td:
+            if td["name"] == table_data["name"]:
+                print("\033[31;1mDieser Name existiert bereits!\033[0m")
+                return
+        table_data["idx"] = idx
+        saved_td.append(table_data)
+        fetch_data["table_data"] = saved_td
+
+        data_file.seek(0)
+        data_file.write(json.dumps(fetch_data, indent=4))
+        data_file.truncate()
+        print("Erfolg!")
+
+
 def main():
     url = input("Bitte URL eingeben > ")
     data = do_request(url)
@@ -82,23 +144,26 @@ def main():
 
     name = input("Wie soll der Wert in der Tabelle heißen? > ")
 
-    d = {
+    table_data = {
         "idx": -1,
         "field": searched_value["key"],
         "name": name
     }
 
     if searched_value["label"] is not None:
-        d["label"] = searched_value["label"]
+        table_data["label"] = searched_value["label"]
 
-    print("\n\nsites_to_fetch: \n")
-    print(json.dumps(build_url_dict(url), indent=4))
-    print("\n\ntable_data: \n")
-    print(json.dumps(d, indent=4))
+    sites_to_fetch = build_url_dict(url)
 
-    print("\n\033[31;1mDaran denken 'idx' zu ändern\033[0m")
+    if os.path.isfile(os.getcwd() + "/data.json"):
+        put_results_in_data_file(sites_to_fetch, table_data)
+    else:
+        printResults(sites_to_fetch, table_data)
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except ValueError as e:
+        print(f"\033[31;1mFEHLER: {e}\033[0m")
     input("\n\nBitte [ENTER] zum Beenden drücken")
