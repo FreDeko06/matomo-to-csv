@@ -41,15 +41,16 @@ Ein Bespiel für eine data.json kann [hier](examples/data.json) gefunden werden.
 1. Den Wert in Matomo finden
 2. In der Nähe des Wertes (meist unten auf der Tafel auf der der Wert steht), auf das Export-Symbol drücken
 3. Exportformat: Json auswählen > EXPORT
-4. Im Browser können durch ein Häkchen oben die Werte schöner angezeigt werden
-5. Nun mit z.B. Strg.-F den gewünschten Wert suchen
-6. Der Schlüssel steht vor dem Wert in Anführungszeichen
-7. Wenn es im gleichen Objekt (in den gleichen {}) einen Wert ```label``` gibt, ist dieser in die [table_data](#table_data) einzutragen
-8. In der URL muss der Parameter ```method``` in ```sites_to_fetch``` eingetragen werden, wenn nicht schon vorhanden
-9. Index abzählen und Werte in data.json hinzufügen
+4. add.py starten
+5. Die URL, die durch 3. geöffnet wurde aus dem Browser in das Programm kopieren
+6. Den jetzigen Wert in das Programm eintragen
+7. Den richtigen Datenpunkt finden und die rote Zahl davor eingeben
+8. Einen Namen für die Tabelle festlegen (**Jeder Name darf nur einmal verwendet werden**)
+9. Die JSON-Objekte werden ausgegeben oder direkt in die data.json geschrieben
+10. Wenn sie manuell eingefügt werden, muss ```idx``` noch geändert werden!
 
 ## Verwendung
-Nach Starten des Skripts durch Doppelklick, wird dazu aufgefordert, den Start- und Beginnmonat/-tag einzugeben, sowie andere Daten, wenn diese nicht in der data.yml oder im Skript hinterlegt sind.
+Nach Starten des Skripts durch Doppelklick, wird dazu aufgefordert, den Start- und Endmonat/-tag einzugeben, sowie andere Daten, wenn diese nicht in der data.json oder im Skript hinterlegt sind.
 Danach wird das Programm die Daten exportieren und in der angegebenen CSV-Datei abspeichern. Diese kann nun auch immer wiederverwendet werden, da neue Daten einfach hinzugefügt werden.
 
 ## Verbindung mit Excel
